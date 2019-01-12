@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wojciech Bubolka - WSB Zajęcia</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&amp;subset=latin-ext" >
+    <link rel="stylesheet" href="./assets/css/normalize.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+
+</head>
+<body>
+
+    <header class="header clearfix">
+
+        <div class="header-logo">
+            <a href="./index.html">Wojciech Bubolka</a>
+        </div>
+        
+        <nav class="header-nav">
+            <ul>
+                <li><a href="./index.html">Strona Główna</a></li>
+                <li><a href="./about.html">O Mnie</a></li>
+                <li><a href="./tasks.html" class="active">Zadania</a></li>
+                <li><a href="./contact.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="main clearfix">
+
+        <section class="content">
+
+            <section id="zadanie-1" class="task clearfix">
+                <h2>Zadanie 1: Zdefiniuj funkcję sprawdz_z1()</h2>
+                <p>Zdefiniuj  funkcję sprawdz_z1(). Efektem działania funkcji powinno być wyskakujące okienko (alert) z informacją czy wpisania w input o id input_z1 liczba jest większa od 10. Jeżeli liczba będzie większa od 10 komunikat ma mieć treść "Warunek spełniony!" w przeciwnym przypadku komunikat ma mieć treść "Błąd! Warunek niespełniony!".</p>
+
+                <h3>Rozwiązanie:</h3>
+                <div class="task-answer task-1-js">
+                    <h4>Proszę wpisać liczbę:</h4>
+                    <form action="" onsubmit="return sprawdz_z1(); return false;" method="post">
+                        <input type="text" id="input_z1" name="input_z1">
+                        <input type="submit" value="Sprawdź">
+                    </form>
+                </div>
+                <h3>Kod: <a href="#" class="pokaz-kod button" data-kod="zadanie-1-kod">Pokaż</a></h3>
+                <div id="zadanie-1-kod" class="task-code hidden">
+                    <pre>
+                        <code>
+function sprawdz_z1(){
+
+    const input = document.getElementById('input_z1');
+    const value = input.value;
+    let alertMessage = "Warunek spełniony!";
+
+    // sprawdzamy czy jest liczba i czy jest cos wpisane
+    if(!isNaN(value) && value.length){
+        // spradzamy czy jest mniejszy lub rowne 10
+        if(value <= 10) alertMessage = "Błąd! Warunek niespełniony!";
+    }else{
+        alertMessage = "Błąd! Prosze wpisać liczbę! ";
+    }
+    // alert
+    alert(alertMessage);
+    return false;
+}
+                        </code>
+                    </pre>
+                </div>
+
+            </section>
+
+            <section id="zadanie-2" class="task clearfix">
+                <h2>Zadanie 2: Zdefiniuj funkcję sprawdz_z2()</h2>
+                <p>Zdefiniuj funkcję sprawdz_z2(), której działanie będzie polegać na zamianie wpisanej cyfry w polu input o id "input_z2", na nazwę dnia tygodnia. Jeżeli w inpucie wpiszemy 5 i naciśniemy przycisk "Sprawdź dzień", funkcja ma wyświetlić komunikat "Piątek". Numerację dni tygodnia rozpoczynami od 1 - Poniedziałek, kończymy na 7 - Niedziela. Każda inna wpisana wartość (default) ma spowodować wypisanie komunikatu "Błędny numer dnia tygodnia!"</p>
+                
+                <h3>Rozwiązanie:</h3>
+                <div class="task-answer task-2-js">
+                    <h4>Proszę wpisać liczbę:</h4>
+                    <form action="" onsubmit="return sprawdz_z2();" method="post">
+                        <input type="text" id="input_z2" name="input_z2">
+                        <input type="submit" value="Sprawdź dzień">
+                    </form>
+                </div>
+                <h3>Kod: <a href="#" class="pokaz-kod button" data-kod="zadanie-2-kod">Pokaż</a></h3>
+                <div id="zadanie-2-kod" class="task-code hidden">
+                    <pre>
+                        <code>
+function sprawdz_z2(){
+
+    const input = document.getElementById('input_z2');
+    const value = input.value;
+    let alertMessage;
+    
+    // sprawdzamy czy jest liczba
+    if(!isNaN(value) && value.length){
+        switch (parseInt(value)) {
+            case 1:
+                alertMessage = "Poniedziałek";
+                break;
+            case 2:
+                alertMessage = "Wtorek";
+                break;
+            case 3:
+                alertMessage = "Środa";
+                break;
+            case 4:
+                alertMessage = "Czwartek";
+                break;
+            case 5:
+                alertMessage = "Piątek";
+                break;
+            case 6:
+                alertMessage = "Sobota";
+                break;
+            case 7:
+                alertMessage = "Niedziela";
+                break;            
+            default:
+                alertMessage = "Błędny numer dnia tygodnia!";
+                break;
+        }
+
+        // Alternatywnie
+        // let dniTygodnia = ['Poniedzialek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'];
+        // let index = value -1;
+        // alertMessage = dniTygodnia[index];
+        // if(!alertMessage) alertMessage = 'Błędny numer dnia tygodnia!';
+    }else{
+        alertMessage = "Błąd! Prosze wpisać liczbę od 1 do 7!";
+    }
+
+    // alert
+    alert(alertMessage);
+    return false;
+}
+                        </code>
+                    </pre>
+                </div>
+
+            </section>
+
+            <section id="zadanie-3" class="task clearfix">
+                <h2>Zadanie 3: Zdefiniuj funkcję sprawdz_cb_zad3()</h2>
+                <p>Stwórz pole checkbox o nazwie i id zad_3_cb i przypisz do niego funkcję onclick o nazwie sprawdz_cb_zad3(), która będzie wypisywać komunikat po każdym kliknięciu w pole. Jeżeli pole będzie zaznaczone powinno zostać wyświetlone okienko z informacją "Pole zaznaczone!" w przeciwnym przypadku (else) komunikat "Pole odznaczone!". Wykorzystaj instrukcję if.</p>
+                <h3>Rozwiązanie:</h3>
+                <div class="task-answer task-3-js">
+                    <h4>Proszę nacisnać na checkbox:</h4>
+                    <label for="zad_3_cb"><input type="checkbox" id="zad_3_cb" name="zad_3_cb" onclick="sprawdz_cb_zad3()"> <span id="zad_3_cb_message"></span></label>
+                     
+
+                    
+                </div>
+                <h3>Kod: <a href="#" class="pokaz-kod button" data-kod="zadanie-3-kod">Pokaż</a></h3>
+                <div id="zadanie-3-kod" class="task-code hidden">
+                    <pre>
+                        <code>
+function sprawdz_cb_zad3(){
+    const checkbox = document.getElementById('zad_3_cb');
+    const alertBox = document.getElementById('zad_3_cb_message');
+    let  alertMessage;
+
+    if(checkbox.checked == true){
+        alertMessage = "Pole zaznaczone!";
+    }else{
+        alertMessage = "Pole odznaczone!";
+    }
+    alertBox.innerHTML = alertMessage;
+    alert(alertMessage);
+}
+                        </code>
+                    </pre>
+                </div>
+
+            </section>
+
+            <section id="zadanie-4" class="task clearfix">
+                <h2>Zadanie 4: Rozwiązywanie równania kwadratowego</h2>
+                <p>Stwórz odpowiedni kod HTML i JavaScript, który pozwoli na rozwiązywanie równania kwadratowego. Kod HTML powinien zawierać 3 pola input na zmienne a, b i c. Użytkownik będzie wpisywał w te pola liczby. Po naciśnięciu przycisku z tekstem "Oblicz pierwiastki" odpowiednia funkcja powinna obliczyć deltę i pierwiastki równania. Wynik działania skryptu powinien być wyświetlany w polu textarea. Jeżeli delta jest ujemna w pole textarea powinien zostać wstawiony odpowiedni komunikat np. "Delta ujemna, brak rozwiązań!". Wykorzystaj instrukcję if i funkcję do obliczania pierwiastka. Poszukaj w jaki sposób obliczamy pierwiastki z liczby w JavaScript.</p>
+                <p>Dodatkowym utrudnieniem w tym zadaniu jest wpisywanie tekstu w pole typu textarea. Poszukaj jak wpisać tekst do pola textarea za pomocą JavaScriptu. Do obliczenia pierwiastka użyj funkcji Math.sqrt() Tekst wyświetlany w polu tekstarea powinien być złączeniem paru tekstów i zmiennych. Do tworzenia 'enterów' użyj znaku specjalnego w tekście \n.</p>
+
+                <h3>Rozwiązanie:</h3>
+                <div class="task-answer task-4-js">
+                    <h4>Proszę wpisać współczynniki aby rozwiązać równanie kwadratowe:</h4>
+                    <form action="" onsubmit="return oblicz_kw();" method="post">
+                        <label for="input_kw_a">A:</label>
+                        <input type="text" id="input_kw_a" name="input_kw_a">
+                        <label for="input_kw_b">B:</label>
+                        <input type="text" id="input_kw_b" name="input_kw_b">
+                        <label for="input_kw_c">C:</label>
+                        <input type="text" id="input_kw_c" name="input_kw_c">
+                        <input type="submit" value="Oblicz pierwiastki">
+
+                        <label for="wynik_kw">Wynik</label>
+                        <textarea rows="4" id="wynik_kw" name="wynik_kw" readonly></textarea>
+                    </form>
+                    
+                </div>
+                <h3>Kod: <a href="#" class="pokaz-kod button" data-kod="zadanie-4-kod">Pokaż</a></h3>
+                <div id="zadanie-4-kod" class="task-code hidden">
+                    <pre>
+                        <code>
+function oblicz_kw(){
+    let alertMessage;
+
+    const a = parseFloat(document.getElementById('input_kw_a').value);
+    const b = parseFloat(document.getElementById('input_kw_b').value);
+    const c = parseFloat(document.getElementById('input_kw_c').value);
+
+    console.log(c);
+
+    const textarea = document.getElementById('wynik_kw');
+    if(isNaN(a) || isNaN(b) || isNaN(c)) {
+        alert('Współczynniki równania muszą być liczbami!'); 
+        return false;
+    }
+    if(a == 0) {
+        alertMessage = 'Współczynnik równania A nie moze równać się 0!';
+    }else{
+        const delta = (b*b)-(4*a*c);
+
+        let x,x1,x2;
+        
+        if(delta < 0){
+            alertMessage = 'Delta ujemna, brak rozwiązań!';
+        }
+        if(delta == 0){
+            x = (-b)/(2*a);
+            alertMessage = 'Delta równa 0!\nMamy 1 rozwiazanie:\nx = '+ x;
+        }
+        if(delta > 0){
+            const pierwiastek = Math.sqrt(delta);
+
+            x1 = (-b - pierwiastek)/(2*a)
+            x2 =  (-b + pierwiastek)/(2*a)
+            alertMessage = 'Delta dodatnia!\nPierwiastek to: ' + pierwiastek + '\nMamy 2 rozwiazania:\nx1 = ' + x1 + ' oraz x2 = ' + x2;
+        }
+    }
+
+    textarea.value = alertMessage;
+
+    // focus to textarea ...
+    
+    return false;
+
+}
+                        </code>
+                    </pre>
+                </div>
+            </section>
+
+            <section id="zadanie-5" class="task clearfix">
+                <h2>Zadanie 5: Zadanie dla chętnych</h2>
+                <p>Zadanie dla chętnych: Stwórz formularz z podaniem imienia, nazwiska, daty urodzenia, maila oraz komentarza. Po kliknięciu w opcję "wyślij" powinien pojawić się komunikat, że wysłano dane z formularza. Zabezpiecz poszeczgólne inputy przed podaniem nieprawidłowych danych (np. do imienia lub nazwiska podaniem cyfr, daty liczb, a maila - np. brakiem @ - jak to zrobić jest m.in. tutaj:</p>
+                <p><a href="https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript" target="_blank">https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript</a></p>
+            </section>
+
+            
+
+        </section>
+
+        <aside class="sidebar">
+            <h3>Najnowsze zadania</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante.</p>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="./tasks.html#zadanie-1">Zadanie 1: Zdefiniuj funkcję sprawdz_z1()</a></li>
+                    <li><a href="./tasks.html#zadanie-2">Zadanie 2: Zdefiniuj funkcję sprawdz_z2()</a></li>
+                    <li><a href="./tasks.html#zadanie-3">Zadanie 3: Zdefiniuj funkcję sprawdz_cb_zad3()</a></li>
+                    <li><a href="./tasks.html#zadanie-4">Zadanie 4: Rozwiązywanie równania kwadratowego</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+    </section>
+
+    <footer class="footer clearfix">
+        &copy; 2019 Wojciech Bubółka - Programista Front End
+    </footer>
+
+    <script src="./assets/js/main.js"></script>
+
+</body>
+
+</html>
